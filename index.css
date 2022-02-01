@@ -55,6 +55,10 @@
     line-height: 2em;
 }
 
+.congratulations {
+    margin: 2em;
+}
+
 .score0 {
     background-color: #eaeaea;
 }
@@ -83,14 +87,15 @@ form {
 
 #copyButton {
     width: 100%;
+    margin: 1em 0em;
 }
 
 #inputButton {
-    width: 20%;
+    width: 100%;
 }
 
 #inputText {
-    width: 80%;
+    width: 100%;
 }
 
 .centerBlock {

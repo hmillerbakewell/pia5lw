@@ -38,6 +38,7 @@ function guess(target, offering) {
 }
 alphabet = "abcdefghijklmnopqrstuvwxyz"
 letterRows = ["qwertyuiop", "asdfghjkl", "zxcvbn"]
+dvorakRows = ["qwertyuiop", "asdfghjkl", "zxcvbn"]
 
 function prettyPrint(response) {
     let node = document.createElement("div")
@@ -109,6 +110,7 @@ function Game() {
         }
         if (this.lives == 0) {
             this.refreshUI()
+            this.end()
             return false
         }
         if (!verifyWord(attempt, this.words)) {
@@ -123,10 +125,12 @@ function Game() {
         this.registerResponse(response)
         if (this.score == 0) {
             this.won = true
+            this.refreshUI()
+            this.end()
         } else {
             this.lives -= 1
+            this.refreshUI()
         }
-        this.refreshUI()
         return true
     }
 
@@ -175,7 +179,33 @@ function Game() {
             })
             letterDiv.appendChild(rowDiv)
         })
+    }
 
+    this.end = function () {
+
+        if (this.won) {
+
+            let responseArea = document.getElementById("responses")
+
+
+            let congratsDiv = document.createElement("div")
+            congratsDiv.innerText = "Congratulations!"
+            congratsDiv.classList.add("scoreboard")
+            congratsDiv.classList.add("congratulations")
+            responseArea.appendChild(congratsDiv)
+
+        } else if (this.lives == 0) {
+
+            let responseArea = document.getElementById("responses")
+
+
+            let commiserationDiv = document.createElement("div")
+            commiserationDiv.innerText = "Commiserations! Try a new word tomorrow."
+            commiserationDiv.classList.add("scoreboard")
+            commiserationDiv.classList.add("congratulations")
+            responseArea.appendChild(commiserationDiv)
+
+        }
 
 
         if (this.lives == 0 || this.won) {
@@ -193,20 +223,27 @@ function Game() {
             let copyButton = document.createElement("input")
             copyButton.setAttribute("id", "copyButton")
             copyButton.setAttribute("type", "submit")
-            copyButton.setAttribute("value", "copy")
+            copyButton.setAttribute("value", "Copy Grid")
             copyButton.setAttribute("tabindex", "0")
 
             copyForm.appendChild(copyButton)
             responseArea.appendChild(copyForm)
 
         }
+
+        document.getElementById("inputButton").disabled = true
     }
+
     this.implementUI = function () {
 
         let display = document.getElementById("display")
 
 
         display.innerHTML = ""
+        let responseArea = document.createElement("div")
+        responseArea.classList.add("responseArea")
+        responseArea.setAttribute("id", "responses")
+        display.appendChild(responseArea)
 
         let scoreBoard = document.createElement("div")
 
@@ -250,10 +287,6 @@ function Game() {
         display.appendChild(form)
         display.appendChild(scoreBoard)
 
-        let responseArea = document.createElement("div")
-        responseArea.classList.add("responseArea")
-        responseArea.setAttribute("id", "responses")
-        display.appendChild(responseArea)
 
         let lettersArea = document.createElement("div")
         lettersArea.classList.add("alphabet")
