@@ -37,8 +37,7 @@ function guess(target, offering) {
 
 }
 alphabet = "abcdefghijklmnopqrstuvwxyz"
-letterRows = ["qwertyuiop", "asdfghjkl", "zxcvbn"]
-dvorakRows = ["qwertyuiop", "asdfghjkl", "zxcvbn"]
+letterRows = ["qwertyuiop", "asdfghjkl", "zxcvbnm"]
 
 function prettyPrint(response) {
     let node = document.createElement("div")
