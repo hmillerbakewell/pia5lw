@@ -183,9 +183,9 @@ function Game() {
 
     this.end = function () {
 
-        if (this.won) {
+        let responseArea = document.getElementById("responses")
 
-            let responseArea = document.getElementById("responses")
+        if (this.won) {
 
 
             let congratsDiv = document.createElement("div")
@@ -196,11 +196,10 @@ function Game() {
 
         } else if (this.lives == 0) {
 
-            let responseArea = document.getElementById("responses")
 
 
             let commiserationDiv = document.createElement("div")
-            commiserationDiv.innerText = "Commiserations! Try a new word tomorrow."
+            commiserationDiv.innerText = "Commiserations!"
             commiserationDiv.classList.add("scoreboard")
             commiserationDiv.classList.add("congratulations")
             responseArea.appendChild(commiserationDiv)
@@ -209,8 +208,6 @@ function Game() {
 
 
         if (this.lives == 0 || this.won) {
-
-            let responseArea = document.getElementById("responses")
 
 
             let copyForm = document.createElement("form")
@@ -230,6 +227,15 @@ function Game() {
             responseArea.appendChild(copyForm)
 
         }
+
+
+        let comebackDiv = document.createElement("div")
+        comebackDiv.innerText = "There will be a new word tomorrow!"
+        comebackDiv.classList.add("scoreboard")
+        comebackDiv.classList.add("congratulations")
+        responseArea.appendChild(comebackDiv)
+
+
 
         document.getElementById("inputButton").disabled = true
     }
