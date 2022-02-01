@@ -132,7 +132,7 @@ function Game() {
 
     this.lettersUsed = function () {
         seen = {}
-        alphabet.split("").forEach(letter => seen[letter] = 0)
+        alphabet.split("").forEach(letter => seen[letter] = -1)
         this.responses.forEach(response => response.forEach(r => {
             if (r[1] < 3) {
                 seen[r[0]] = Math.max(seen[r[0]], r[1])
@@ -147,7 +147,7 @@ function Game() {
         letterDiv = document.getElementById("alphabet")
 
         letterDiv.innerHTML = ""
-        /*
+
         let alphabetLabel = document.createElement("div")
         alphabetLabel.innerText = "Letters used so far"
         alphabetLabel.classList.add("scoreboard")
@@ -163,7 +163,11 @@ function Game() {
             row.split("").forEach(letter => {
                 let node = document.createElement("div")
                 score = lettersUsed[letter]
-                node.classList.add("score" + score)
+                if (score > -1) {
+                    node.classList.add("score" + score)
+                } else {
+                    node.classList.add("scoreUnused")
+                }
                 node.classList.add("alphabetLetter")
                 node.innerText = letter
                 node.addEventListener("click", event => { addLetter(letter) })
@@ -171,7 +175,7 @@ function Game() {
             })
             letterDiv.appendChild(rowDiv)
         })
-        */
+
 
 
         if (this.lives == 0 || this.won) {

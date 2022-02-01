@@ -67,6 +67,10 @@
     background-color: #cfa;
 }
 
+.scoreUnused {
+    background-color: #fff;
+}
+
 .score3 {
     background-color: #ddd;
     color: #aaa;
