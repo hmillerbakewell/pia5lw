@@ -135,6 +135,7 @@ function Game() {
             copyForm.setAttribute("action", "#")
             copyForm.addEventListener("submit", event => {
                 this.copyResponses()
+                event.preventDefault()
             })
 
             let copyButton = document.createElement("input")
