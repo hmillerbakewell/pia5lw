@@ -56,7 +56,7 @@ form {
 }
 
 .centerBlock {
-    width: 20em;
+    max-width: 30em;
     margin: auto;
     padding: 1em 0em;
     text-align: justify;
