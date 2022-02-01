@@ -1,2 +1,2 @@
-# pia5ly
-A simple word guessing game
+# pia5lw
+A simple word guessing game.

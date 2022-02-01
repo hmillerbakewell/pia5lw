@@ -1,0 +1,67 @@
+.guessResponseWord {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    margin: auto;
+    justify-items: center;
+}
+
+.guessResponseLetter {
+    width: 1.5em;
+    height: 1.5em;
+    line-height: 1.5em;
+    text-align: center;
+    border: 1px solid #aaa;
+    padding: 0em;
+    margin: 0.5em;
+}
+
+.scoreboard {
+    text-align: center;
+    height: 2em;
+    line-height: 2em;
+}
+
+.score0 {
+    background-color: #eaeaea;
+}
+
+.score1 {
+    background-color: #abf;
+}
+
+.score2 {
+    background-color: #cfa;
+}
+
+.score3 {
+    background-color: #ddd;
+    color: #aaa;
+}
+
+form {
+    margin: 0px;
+    padding: 0px;
+}
+
+#copyButton {
+    width: 100%;
+}
+
+#inputButton {
+    width: 20%;
+}
+
+#inputText {
+    width: 80%;
+}
+
+.centerBlock {
+    width: 20em;
+    margin: auto;
+    padding: 1em 0em;
+    text-align: justify;
+}
+
+li {
+    margin: 0.5em 0em;
+}

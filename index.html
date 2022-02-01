@@ -1,0 +1,45 @@
+<head>
+    <title>PIA5LW: A word game</title>
+    <script src="index.js"></script>
+    <link href="index.css" rel="stylesheet" />
+    <link href="normalize.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="display" class="centerBlock">
+        Data currently loading.
+    </div>
+    <div id="info" class="centerBlock">
+        <p>
+            Guess the word!
+            You get seven tries.
+            The computer chooses from a list of
+            five letter dictionary words.
+            The words are root words,
+            meaning no plurals or conjugations,
+            but can include scientific terms.
+        </p>
+        <p>
+        <ul>
+            <li>
+                <span class="score2">Green</span> background: Right letter, right place.
+            </li>
+            <li>
+                <span class="score1">Blue</span> background: The letter appears somewhere else in the word.
+            </li>
+            <li>
+                <span class="score0">Grey</span> background: The letter does not appear in the word.
+            </li>
+        </ul>
+        </p>
+        <p>
+            If the word isn't in the dictionary then the response
+            will be shown greyed out, and it won't cost you a guess.
+        </p>
+        <p>
+            The source word list is a modification of the common word list from the Moby project.
+            It contains many words that I, the author,
+            had not encountered before. Good luck.
+        </p>
+    </div>
+</body>
