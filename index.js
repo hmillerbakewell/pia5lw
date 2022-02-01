@@ -147,6 +147,7 @@ function Game() {
         letterDiv = document.getElementById("alphabet")
 
         letterDiv.innerHTML = ""
+        /*
         let alphabetLabel = document.createElement("div")
         alphabetLabel.innerText = "Letters used so far"
         alphabetLabel.classList.add("scoreboard")
@@ -170,6 +171,7 @@ function Game() {
             })
             letterDiv.appendChild(rowDiv)
         })
+        */
 
 
         if (this.lives == 0 || this.won) {
