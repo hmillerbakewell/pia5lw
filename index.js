@@ -36,6 +36,8 @@ function guess(target, offering) {
     })
 
 }
+alphabet = "abcdefghijklmnopqrstuvwxyz"
+letterRows = ["qwertyuiop", "asdfghjkl", "zxcvbn"]
 
 function prettyPrint(response) {
     let node = document.createElement("div")
@@ -98,6 +100,9 @@ function Game() {
         if (!this.loaded) {
             return false
         }
+        if (this.won) {
+            return false
+        }
         if (attempt.length != this.word.length) {
             this.refreshUI()
             return false
@@ -124,8 +129,49 @@ function Game() {
         this.refreshUI()
         return true
     }
+
+    this.lettersUsed = function () {
+        seen = {}
+        alphabet.split("").forEach(letter => seen[letter] = 0)
+        this.responses.forEach(response => response.forEach(r => {
+            if (r[1] < 3) {
+                seen[r[0]] = Math.max(seen[r[0]], r[1])
+            }
+        }))
+        return seen
+    }
+
     this.refreshUI = function () {
         updateLives(this.lives)
+
+        letterDiv = document.getElementById("alphabet")
+
+        letterDiv.innerHTML = ""
+        let alphabetLabel = document.createElement("div")
+        alphabetLabel.innerText = "Letters used so far"
+        alphabetLabel.classList.add("scoreboard")
+        alphabetLabel.classList.add("alphabetLabel")
+
+        letterDiv.appendChild(alphabetLabel)
+
+        let lettersUsed = this.lettersUsed()
+
+        letterRows.forEach((row, rowIndex) => {
+            let rowDiv = document.createElement("div")
+            rowDiv.classList.add("keyboardRow")
+            row.split("").forEach(letter => {
+                let node = document.createElement("div")
+                score = lettersUsed[letter]
+                node.classList.add("score" + score)
+                node.classList.add("alphabetLetter")
+                node.innerText = letter
+                node.addEventListener("click", event => { addLetter(letter) })
+                rowDiv.appendChild(node)
+            })
+            letterDiv.appendChild(rowDiv)
+        })
+
+
         if (this.lives == 0 || this.won) {
 
             let responseArea = document.getElementById("responses")
@@ -202,6 +248,13 @@ function Game() {
         responseArea.classList.add("responseArea")
         responseArea.setAttribute("id", "responses")
         display.appendChild(responseArea)
+
+        let lettersArea = document.createElement("div")
+        lettersArea.classList.add("alphabet")
+        lettersArea.setAttribute("id", "alphabet")
+
+        display.appendChild(lettersArea)
+
         this.refreshUI()
     }
 }
@@ -212,6 +265,12 @@ function display(word) {
 }
 
 let g = new Game()
+
+function addLetter(letter) {
+    let box = document.getElementById("inputText")
+    box.value = box.value + letter
+    box.focus()
+}
 
 function start() {
     grab_data().then(function (response) {

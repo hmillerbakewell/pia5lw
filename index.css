@@ -15,6 +15,40 @@
     margin: 0.5em;
 }
 
+.alphabetLetter {
+    width: 1em;
+    height: 1em;
+    line-height: 1em;
+    font-size: small;
+    text-align: center;
+    border: 1px solid #aaa;
+    padding: 0em;
+    margin: 0.5em;
+}
+
+.alphabet {
+    display: grid;
+    justify-items: center;
+}
+
+.keyboardRow0 {
+    grid-row: 1;
+}
+
+.keyboardRow1 {
+    grid-row: 2;
+}
+
+
+.keyboardRow2 {
+    grid-row: 3;
+}
+
+
+.keyboardRow {
+    display: flex;
+}
+
 .scoreboard {
     text-align: center;
     height: 2em;
