@@ -333,6 +333,7 @@ function start() {
     }).then(json => {
         g.load(json["words"])
         g.implementUI()
+        document.getElementById("inputText")?.focus()
     })
 }
 
