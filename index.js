@@ -37,7 +37,7 @@ function guess(target, offering) {
 
 }
 alphabet = "abcdefghijklmnopqrstuvwxyz"
-letterRows = ["qwertyuiop", "asdfghjkl", "zxcvbnm"]
+letterRows = ["qwertyuiop⬅", "asdfghjkl➡", "zxcvbnm"]
 
 function prettyPrint(response) {
     let node = document.createElement("div")
@@ -312,7 +312,15 @@ let g = new Game()
 
 function addLetter(letter) {
     let box = document.getElementById("inputText")
-    box.value = box.value + letter
+    if (letter == "⬅") {
+        if (box.value.length > 0) {
+            box.value = box.value.substr(0, box.value.length - 1)
+        }
+    } else if (letter == "➡") {
+        formSubmit()
+    } else {
+        box.value = box.value + letter
+    }
     box.focus()
 }
 
