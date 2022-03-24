@@ -7,7 +7,7 @@ async function grab_data() {
 function choose_word(words) {
     let now = new Date
     let today = new Date(now.getFullYear(), now.getMonth(), now.getDay())
-    let date_as_number = Number(today) * 1111
+    let date_as_number = Number(today) / (60 * 60 * 24 * 1000)
     return words[date_as_number % words.length]
 }
 
