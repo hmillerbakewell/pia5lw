@@ -156,7 +156,7 @@ function Game() {
         alphabetLabel.classList.add("scoreboard")
         alphabetLabel.classList.add("alphabetLabel")
 
-        letterDiv.appendChild(alphabetLabel)
+        //letterDiv.appendChild(alphabetLabel)
 
         let lettersUsed = this.lettersUsed()
 
@@ -271,7 +271,7 @@ function Game() {
         })
 
         let labelGuessEntry = document.createElement("label")
-        let instructions = document.createElement("div")
+        let instructions = document.createElement("h1")
         instructions.innerText = "Guess the 5 letter word"
         instructions.classList.add("scoreboard")
         labelGuessEntry.appendChild(instructions)
@@ -285,10 +285,10 @@ function Game() {
         inputButton.setAttribute("type", "submit")
         inputButton.setAttribute("value", "Go!")
         inputButton.setAttribute("tabindex", "0")
-        labelGuessEntry.appendChild(inputText)
-        labelGuessEntry.appendChild(inputButton)
-
         form.appendChild(labelGuessEntry)
+        form.appendChild(inputText)
+        form.appendChild(inputButton)
+
         display.appendChild(form)
         display.appendChild(scoreBoard)
 
